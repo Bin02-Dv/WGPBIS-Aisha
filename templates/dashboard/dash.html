@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Gas Plant System{% endblock%}
+
+{% block content %}
+<main>
+    <header>
+      <h1>Dashboard</h1>
+      <p>Welcome back! Here’s a quick overview of your system.</p>
+    </header>
+
+    <section class="dashboard-container">
+      <div class="card">
+        <h3>Total Sales Today</h3>
+        <p>₦45,000</p>
+      </div>
+
+      <div class="card">
+        <h3>Current Inventory (kg)</h3>
+        <p>2,000</p>
+      </div>
+
+      <div class="card">
+        <h3>Customers</h3>
+        <p>120</p>
+      </div>
+
+      <div class="card">
+        <h3>Low Stock Alerts</h3>
+        <p>3 Items</p>
+      </div>
+    </section>
+
+    <section class="recent-activities">
+      <h2>Recent Activities</h2>
+      <ul class="activity-list" id="activityList">
+        <li>+ ₦12,000 sale added by Admin</li>
+        <li>New customer registered: Musa A.</li>
+        <li>Inventory updated: 50kg added to Main Tank</li>
+      </ul>
+    </section>
+  </main>
+{% endblock%}
