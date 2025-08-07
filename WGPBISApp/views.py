@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def dash(request):
     return render(request, "dashboard/dash.html")
+
+def inventory(request):
+    return render(request, 'dashboard/inventory.html')

@@ -1,0 +1,96 @@
+{% extends "dashboard/base.html" %}
+
+
+{% block content %}
+
+<style>
+    body {
+      background-color: #f4f7fa;
+    }
+
+    .status-refill {
+      color: #198754; /* Bootstrap green */
+      font-weight: bold;
+    }
+
+    .status-low {
+      color: #dc3545; /* Bootstrap red */
+      font-weight: bold;
+    }
+
+    .inventory-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+</style>
+
+<div class="inventory-container">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4">
+    <h2 class="mb-3 mb-md-0 text-dark">Inventory Management</h2>
+    <button class="btn btn-success" onclick="alert('Add New Inventory feature coming soon!')">+ Add Inventory</button>
+  </div>
+
+  <div class="mb-4">
+    <input type="text" id="searchInput" class="form-control" placeholder="Search for gas type or status..." onkeyup="searchTable()">
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="inventoryTable">
+      <thead class="table-dark">
+        <tr>
+          <th>Gas Type</th>
+          <th>Quantity (Cylinders)</th>
+          <th>Refill Status</th>
+          <th>Last Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cooking Gas</td>
+          <td>150</td>
+          <td class="status-refill">Available</td>
+          <td>2025-08-05</td>
+        </tr>
+        <tr>
+          <td>Industrial Gas</td>
+          <td>40</td>
+          <td class="status-low">Low</td>
+          <td>2025-08-04</td>
+        </tr>
+        <tr>
+          <td>Medical Oxygen</td>
+          <td>80</td>
+          <td class="status-refill">Available</td>
+          <td>2025-08-06</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  function searchTable() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toLowerCase();
+    const table = document.getElementById("inventoryTable");
+    const rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+      const cells = rows[i].getElementsByTagName("td");
+      let show = false;
+      for (let j = 0; j < cells.length; j++) {
+        if (cells[j].innerText.toLowerCase().indexOf(filter) > -1) {
+          show = true;
+          break;
+        }
+      }
+      rows[i].style.display = show ? "" : "none";
+    }
+  }
+</script>
+
+{% endblock %}
